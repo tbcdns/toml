@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/naoina/toml/ast"
+	"github.com/tbcdns/toml/ast"
 )
 
 const (
@@ -473,7 +473,7 @@ func (p *toml) setTable(t *ast.Table, buf []rune, begin, end int) {
 	name := string(buf[begin:end])
 	names := splitTableKey(name)
 	if t, exists := p.tableMap[name]; exists {
-		if lt := p.tableMap[names[len(names)-1]]; t.Type == ast.TableTypeArray || lt != nil && lt.Type == ast.TableTypeNormal {
+		if t.Type == ast.TableTypeArray {
 			p.Error(fmt.Errorf("table `%s' is in conflict with %v table in line %d", name, t.Type, t.Line))
 		}
 	}

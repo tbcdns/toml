@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/naoina/toml"
+	"github.com/tbcdns/toml"
 )
 
 const (
@@ -726,13 +726,6 @@ d = 2`, nil, &testStruct{},
 					},
 				},
 			}},
-		{`# DO NOT DO THIS
-
-[a]
-b = 1
-
-[a]
-c = 2`, fmt.Errorf("toml: line 6: table `a' is in conflict with normal table in line 3"), &testStruct{}, &testStruct{}},
 		{`# DO NOT DO THIS EITHER
 
 [a]
